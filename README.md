@@ -2,7 +2,7 @@
 This repository includes the implementation for paper Personalized Counterfactual Fairness in Recommendation (a.k.a. Towards Personalized Fairness based on Causal Notion):
 
 *Yunqi Li, Hanxiong Chen, Shuyuan Xu, Yingqiang Ge, Yongfeng Zhang. 2021. [Personalized Counterfactual Fairness in Recommendation](https://arxiv.org/pdf/2105.09829.pdf). 
-In Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information RetrievalJuly 2021 Pages 1054–1063 https://doi.org/10.1145/3404835.3462966 (SIGIR’21)*
+In Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information RetrievalJuly 2021 (SIGIR’21)*
 
 ## Refernece
 
