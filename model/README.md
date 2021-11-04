@@ -1,1 +1,1 @@
-
+Trained model save path
