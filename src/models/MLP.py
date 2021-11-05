@@ -37,10 +37,6 @@ class MLP(BaseRecModel):
 
     def _init_nn(self):
         # Init embeddings
-        # self.gmf_embeddings = torch.nn.Embedding(self.item_num + self.user_num, self.u_vector_size)
-        # self.mlp_embeddings = \
-        #     torch.nn.Embedding(self.item_num + self.user_num, self.u_vector_size)
-        # self.uid_embeddings = self.mlp_embeddings
         self.uid_embeddings = torch.nn.Embedding(self.user_num, self.u_vector_size)
         self.iid_embeddings = torch.nn.Embedding(self.item_num, self.u_vector_size)
 
@@ -65,12 +61,9 @@ class MLP(BaseRecModel):
         u_ids = feed_dict['X'][:, 0] - 1
         i_ids = feed_dict['X'][:, 1] - 1
 
-        # gmf_u_vectors = self.gmf_embeddings(u_ids)
-        # gmf_i_vectors = self.gmf_embeddings(i_ids)
         mlp_u_vectors = self.uid_embeddings(u_ids)
         mlp_i_vectors = self.iid_embeddings(i_ids)
 
-        # gmf = gmf_u_vectors * gmf_i_vectors
         mlp_u_vectors = self.apply_filter(mlp_u_vectors, filter_mask)
 
         mlp = torch.cat((mlp_u_vectors, mlp_i_vectors), dim=-1)
