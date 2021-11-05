@@ -628,13 +628,11 @@ class MultiClassAttacker(nn.Module):
         elif type(m) == torch.nn.Embedding:
             torch.nn.init.normal_(m.weight, mean=0.0, std=0.01)
 
-    # todo: check the format correctness of using criterion (output, labels)
     def forward(self, embeddings, labels):
         output = self.predict(embeddings)['output']
         loss = self.criterion(output.squeeze(), labels)
         return loss
 
-    # todo: check the correctness of output.max() part for return prediction values
     def predict(self, embeddings):
         scores = self.network(embeddings)
         output = F.log_softmax(scores, dim=1)
