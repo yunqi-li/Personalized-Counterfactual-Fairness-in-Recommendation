@@ -13,7 +13,7 @@ class BaseRecModel(nn.Module):
     Base recommendation model. Child classes need to override:
     parse_model_args,
     __init__,
-    _init_weights,
+    _init_nn,
     predict,
     forward,
     """
