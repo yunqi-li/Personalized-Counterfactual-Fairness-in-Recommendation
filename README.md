@@ -43,6 +43,7 @@ scikit_learn==0.23.1
 ## Datasets
 
 - The processed datasets are in  [`./dataset/ml1M`](https://github.com/yunqi-li/Personalized-Counterfactual-Fairness-in-Recommendation/tree/main/dataset/ml1M)
+- After the first execution, two pickle files "ml1M.validation.pkl" and "ml1M.test.pkl" will be generated to save time for future runnings. The generated files will locate at the same directory as the other data files.
 
 ## Example to run the codes
 -   To guarantee the program can execute properly, please keep the directory structure as given in this repository.
