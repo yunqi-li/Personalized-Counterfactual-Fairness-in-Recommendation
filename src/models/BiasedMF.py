@@ -29,7 +29,6 @@ class BiasedMF(BaseRecModel):
 
         prediction = (cf_u_vectors * cf_i_vectors).sum(dim=1).view([-1])
         prediction = prediction + u_bias + i_bias + self.global_bias
-        # prediction = prediction + self.global_bias
 
         out_dict = {'prediction': prediction,
                     'check': check_list,
