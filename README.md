@@ -29,35 +29,28 @@ series = {SIGIR '21}
 
 ## Environments
 
-Python 3.6.6
-
-Packages: See in [requirements.txt](https://github.com/rutgerswiselab/NCR/blob/master/requirements.txt)
+Python 3.8.5
 
 ```
-numpy==1.18.1
-torch==1.0.1
-pandas==0.24.2
-scipy==1.3.0
+numpy==1.20.1
+torch==1.8
+pandas==1.2.4
+scipy==1.6.2
 tqdm==4.32.1
 scikit_learn==0.23.1
 ```
 
 ## Datasets
 
-- The processed datasets are in  [`./dataset/`](https://github.com/rutgerswiselab/NCR/tree/master/dataset)
-
-- **ML-100k**: The origin dataset can be found [here](https://grouplens.org/datasets/movielens/100k/). 
-
-- **Amazon Datasets**: The origin dataset can be found [here](http://jmcauley.ucsd.edu/data/amazon/). 
-    
+- The processed datasets are in  [`./dataset/ml1M`](https://github.com/yunqi-li/Personalized-Counterfactual-Fairness-in-Recommendation/tree/main/dataset/ml1M)
 
 ## Example to run the codes
 -   To guarantee the program can execute properly, please keep the directory structure as given in this repository.
--   Some running commands can be found in [`./command/command.py`](https://github.com/rutgerswiselab/NCR/blob/master/command/command.py)
+-   Some running commands can be found in [`./command/cmd.txt`](https://github.com/yunqi-li/Personalized-Counterfactual-Fairness-in-Recommendation/blob/main/command/cmd.txt)
 -   For example:
 
 ```
 # Neural Collaborative Reasong on ML-100k dataset
 > cd NCR/src/
-> python main.py --rank 1 --model_name NCR --optimizer Adam --lr 0.001 --dataset ml100k01-1-5 --metric ndcg@5,ndcg@10,hit@5,hit@10 --max_his 5 --test_neg_n 100 --l2 1e-4 --r_weight 0.1 --random_seed 2022 --gpu 0
+> python ./main.py --model_name BiasedMF --optimizer Adam --dataset ml1M --data_processor RecDataset --metric ndcg@5,ndcg@10,hit@5,hit@10 --l2 1e-4 --batch_size 1024 --model_path "../model/biasedMF_ml1m_no_filter_neg_sample=100/biasedMF_ml1m_l2=1e-4_dim=64_no_filter_neg_sample=100.pt" --runner RecRunner --d_step 10 --vt_num_neg 100 --vt_batch_size 1024 --no_filter --eval_dict
 ```
