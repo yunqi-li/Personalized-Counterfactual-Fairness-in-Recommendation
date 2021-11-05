@@ -21,9 +21,9 @@ class BaseRecModel(nn.Module):
     @staticmethod
     def parse_model_args(parser, model_name='BaseModel'):
         """
-        模型命令行参数
-        :param parser:
-        :param model_name: 模型名称
+        command line arguments
+        :param parser: parser obj
+        :param model_name: model name
         :return:
         """
         parser.add_argument('--model_path', type=str,
@@ -168,14 +168,7 @@ class BaseRecModel(nn.Module):
         return out_dict
 
     def forward(self, feed_dict, filter_mask):
-        """
-        除了预测之外，还计算loss
-        :param feed_dict: 型输入，是个dict
-        :param filter_mask: mask for filter selection
-        :return: 输出，是个dict，prediction是预测值，check是需要检查的中间结果，loss是损失
-        """
         out_dict = self.predict(feed_dict, filter_mask)
-        # 计算topn推荐的loss，batch前一半是正例，后一半是负例
         batch_size = int(feed_dict[LABEL].shape[0] / 2)
         pos, neg = out_dict['prediction'][:batch_size], out_dict['prediction'][batch_size:]
         loss = -(pos - neg).sigmoid().log().sum()
