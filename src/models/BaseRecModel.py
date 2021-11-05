@@ -97,7 +97,7 @@ class BaseRecModel(nn.Module):
         Initialize neural networks
         :return:
         """
-        pass
+        raise NotImplementedError
 
     def _init_sensitive_filter(self):
         def get_sensitive_filter(embed_dim):
