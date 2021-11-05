@@ -69,9 +69,6 @@ class MLP(BaseRecModel):
         mlp = torch.cat((mlp_u_vectors, mlp_i_vectors), dim=-1)
         mlp = self.mlp(mlp)
 
-        # output = torch.cat((gmf, mlp), dim=-1)
-
-        # prediction = self.prediction(output).view([-1])
         prediction = self.prediction(mlp).view([-1])
 
         out_dict = {'prediction': prediction,
