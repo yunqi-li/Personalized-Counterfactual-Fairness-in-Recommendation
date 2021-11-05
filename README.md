@@ -51,5 +51,5 @@ scikit_learn==0.23.1
 
 ```
 > cd ./src/
-> python ./main.py --model_name BiasedMF --optimizer Adam --dataset ml1M --data_processor RecDataset --metric ndcg@5,ndcg@10,hit@5,hit@10 --l2 1e-4 --batch_size 1024 --model_path "../model/biasedMF_ml1m_no_filter_neg_sample=100/biasedMF_ml1m_l2=1e-4_dim=64_no_filter_neg_sample=100.pt" --runner RecRunner --d_step 10 --vt_num_neg 100 --vt_batch_size 1024 --no_filter --eval_dict
+> python main.py --model_name BiasedMF --optimizer Adam --dataset ml1M --data_processor RecDataset --metric ndcg@5,ndcg@10,hit@5,hit@10 --l2 1e-4 --batch_size 1024 --model_path "../model/biasedMF_ml1m_no_filter_neg_sample=100/biasedMF_ml1m_l2=1e-4_dim=64_no_filter_neg_sample=100.pt" --runner RecRunner --d_step 10 --vt_num_neg 100 --vt_batch_size 1024 --no_filter --eval_dict
 ```
